@@ -8,7 +8,7 @@ export function getWeather() {
   const fetchWeather = async (fetchedCity: string) => {
     try {
       const response = await fetch(
-        `http://api.weatherapi.com/v1/current.json?key=${process.env.VUE_APP_APIKEY}&q=${fetchedCity}&aqi=no`
+        `https://api.weatherapi.com/v1/current.json?key=${process.env.VUE_APP_APIKEY}&q=${fetchedCity}&aqi=yes`
       );
 
       if (!response.ok) {
