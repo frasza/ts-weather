@@ -1,0 +1,1 @@
+GET https://api.weatherapi.com/v1/current.json?key={{$dotenv VUE_APP_APIKEY}}&q=Vrhnika&aqi=yes

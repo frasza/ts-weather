@@ -48,5 +48,6 @@ button {
   background-color: #8cc0de;
   border: none;
   padding: 1rem 1.6rem;
+  cursor: pointer;
 }
 </style>

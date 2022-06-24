@@ -4,10 +4,12 @@ import { ref } from 'vue';
 export function getWeather() {
   const forecast = ref<Weather>();
   const error = ref<string>();
+  const fetching = ref<boolean>(false);
 
   const fetchWeather = async (fetchedCity: string) => {
     forecast.value = undefined;
     error.value = undefined;
+    fetching.value = true;
     try {
       const response = await fetch(
         `https://api.weatherapi.com/v1/current.json?key=${process.env.VUE_APP_APIKEY}&q=${fetchedCity}&aqi=yes`
@@ -34,7 +36,8 @@ export function getWeather() {
       const err = e as Error;
       error.value = err.message;
     }
+    fetching.value = false;
   };
 
-  return { forecast, error, fetchWeather };
+  return { forecast, error, fetching, fetchWeather };
 }
