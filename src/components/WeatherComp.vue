@@ -1,7 +1,9 @@
 <template>
-  <div class="weather" v-if="forecast">
+  <div class="forecast" v-if="forecast">
     <p>{{ forecast.name }}</p>
-    <p>Temperature: {{ forecast.temp_c }}</p>
+    <p>Temperature: {{ forecast.temp_c }} °C</p>
+    <p>Condition: {{ forecast.condition }}</p>
+    <img :src="forecast.condition_icon" :alt="forecast.condition" />
   </div>
   <div class="empty" v-else>
     <p>Please search for city.</p>

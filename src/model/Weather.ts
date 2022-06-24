@@ -4,4 +4,5 @@ export default interface Weather {
   temp_c: number;
   feelslike_c: number;
   condition: string;
+  condition_icon: string;
 }
