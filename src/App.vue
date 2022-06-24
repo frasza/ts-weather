@@ -16,5 +16,3 @@ import { getWeather } from './composables/getWeather';
 
 const { forecast, error, fetchWeather } = getWeather();
 </script>
-
-<style></style>

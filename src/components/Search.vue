@@ -1,6 +1,11 @@
 <template>
   <div class="search">
-    <input type="text" placeholder="City name" v-model="city" />
+    <input
+      type="text"
+      placeholder="City name"
+      v-model="city"
+      v-on:keyup.enter="onEnter"
+    />
     <button @click="query(city)">Fetch</button>
   </div>
 </template>
@@ -21,11 +26,14 @@ const query = (query: string) => {
   emit('searchCity', query);
   city.value = '';
 };
+
+const onEnter = () => query(city.value);
 </script>
 
 <style scoped>
 .search {
   display: flex;
+  justify-content: space-between;
   gap: 10px;
   margin-bottom: 2rem;
 }

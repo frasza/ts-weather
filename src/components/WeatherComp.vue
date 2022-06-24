@@ -1,13 +1,14 @@
 <template>
   <div class="forecast" v-if="forecast">
-    <p>{{ forecast.name }}</p>
-    <p>{{ forecast.country }}</p>
+    <p>{{ forecast.name }}, {{ forecast.country }}</p>
     <p>Temperature: {{ forecast.temp_c }} °C</p>
-    <p>Condition: {{ forecast.condition }}</p>
-    <img :src="forecast.condition_icon" :alt="forecast.condition" />
+    <div class="condition">
+      <img :src="forecast.condition_icon" :alt="forecast.condition" />
+      <p>{{ forecast.condition }}</p>
+    </div>
   </div>
   <div class="empty" v-else>
-    <p>Please search for city.</p>
+    <p>Enter name of the city and retrieve weather.</p>
   </div>
 </template>
 
@@ -22,3 +23,14 @@ defineProps<{
   forecast?: Weather;
 }>();
 </script>
+
+<style scoped>
+.condition {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.empty p {
+  font-size: 3rem;
+}
+</style>
