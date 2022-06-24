@@ -8,6 +8,16 @@
       <img :src="forecast.condition_icon" :alt="forecast.condition" />
       <p>{{ forecast.condition }}</p>
     </div>
+    <div class="air_quality">
+      <span>Air pollution: </span>
+      <span>{{
+        forecast.air_quality_index <= 3
+          ? 'Low'
+          : forecast.air_quality_index > 3 && forecast.air_quality_index < 7
+          ? 'Moderate'
+          : 'High'
+      }}</span>
+    </div>
     <div class="date">
       <p>Updated: {{ forecast.last_updated }}</p>
     </div>

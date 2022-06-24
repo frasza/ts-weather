@@ -29,6 +29,7 @@ export function getWeather() {
         feelslike_c: data.current.feelslike_c,
         condition: data.current.condition.text,
         condition_icon: data.current.condition.icon,
+        air_quality_index: data.current.air_quality['gb-defra-index'],
       };
 
       forecast.value = weather;

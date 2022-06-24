@@ -33,7 +33,6 @@ const query = (query: string) => {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 2rem;
 }
 
 input,
@@ -49,5 +48,15 @@ button {
   border: none;
   padding: 1rem 1.6rem;
   cursor: pointer;
+}
+
+@media screen and (max-width: 400px) {
+  .search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 2rem;
+  }
 }
 </style>

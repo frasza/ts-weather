@@ -1,6 +1,10 @@
 <template>
   <div class="app">
-    <header>Enter name of the city to retrieve weather information.</header>
+    <header>
+      <img src="./assets/images/sunny.png" alt="" />
+      <span>Weather</span>
+      <img src="./assets/images/moon.png" alt="" />
+    </header>
     <main>
       <div class="weather">
         <Search @searchCity="(c) => fetchWeather(c)" />
@@ -21,3 +25,16 @@ import Loader from './components/Loader.vue';
 
 const { forecast, error, fetching, fetchWeather } = getWeather();
 </script>
+
+<style scoped>
+.weather {
+  padding: 2rem;
+  width: 50%;
+}
+
+@media screen and (max-width: 400px) {
+  .weather {
+    width: 100%;
+  }
+}
+</style>

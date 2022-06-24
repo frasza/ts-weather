@@ -6,4 +6,5 @@ export default interface Weather {
   feelslike_c: number;
   condition: string;
   condition_icon: string;
+  air_quality_index: number;
 }
