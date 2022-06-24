@@ -1,18 +1,26 @@
 <template>
   <div class="search">
     <input type="text" placeholder="City name" v-model="city" />
-    <button @click="$emit('searchCity', city)">Fetch</button>
+    <button @click="query(city)">Fetch</button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, defineEmits, ref } from 'vue';
 
 const city = ref('');
 
 defineComponent({
   name: 'SearchComponent',
 });
+const emit = defineEmits<{
+  (event: 'searchCity', city: string): void;
+}>();
+
+const query = (query: string) => {
+  emit('searchCity', query);
+  city.value = '';
+};
 </script>
 
 <style scoped>

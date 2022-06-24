@@ -6,19 +6,22 @@ export function getWeather() {
   const error = ref<string>();
 
   const fetchWeather = async (fetchedCity: string) => {
+    forecast.value = undefined;
+    error.value = undefined;
     try {
       const response = await fetch(
         `https://api.weatherapi.com/v1/current.json?key=${process.env.VUE_APP_APIKEY}&q=${fetchedCity}&aqi=yes`
       );
 
-      if (!response.ok) {
-        throw new Error('Error fetching weather. Please try again.');
-      }
-
       const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error.message);
+      }
 
       const weather: Weather = {
         name: data.location.name,
+        country: data.location.country,
         last_updated: data.current.last_updated,
         temp_c: data.current.temp_c,
         feelslike_c: data.current.feelslike_c,

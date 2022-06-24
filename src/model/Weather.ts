@@ -1,5 +1,6 @@
 export default interface Weather {
   name: string;
+  country: string;
   last_updated: string;
   temp_c: number;
   feelslike_c: number;
