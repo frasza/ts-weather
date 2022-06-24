@@ -4,7 +4,7 @@
       type="text"
       placeholder="City name"
       v-model="city"
-      v-on:keyup.enter="onEnter"
+      v-on:keyup.enter="query(city)"
     />
     <button @click="query(city)">Fetch</button>
   </div>
@@ -26,8 +26,6 @@ const query = (query: string) => {
   emit('searchCity', query);
   city.value = '';
 };
-
-const onEnter = () => query(city.value);
 </script>
 
 <style scoped>
