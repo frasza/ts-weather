@@ -1,5 +1,5 @@
 <template>
-  <div class="forecast" v-if="forecast">
+  <div class="current" v-if="forecast">
     <div class="location">
       <p>{{ forecast.location.name }}, {{ forecast.location.country }}</p>
     </div>
@@ -56,18 +56,9 @@ const airQualityIndexText = computed<string>(() => {
 </script>
 
 <style scoped>
-.forecast {
-  padding: 5rem 0;
+.current {
+  padding: 5rem 0 0 0;
   width: 100%;
-}
-.condition {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.location {
-  margin-bottom: 2rem;
 }
 
 .date {
@@ -77,7 +68,7 @@ const airQualityIndexText = computed<string>(() => {
 }
 
 .date p {
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .air_quality {

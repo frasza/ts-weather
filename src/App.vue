@@ -11,6 +11,7 @@
       <Loader v-if="fetching" />
       <Error :error="error" v-if="error" />
     </div>
+    <Forecast :forecast="forecast" v-if="forecast" />
   </div>
 </template>
 
@@ -19,6 +20,7 @@ import Search from './components/Search.vue';
 import WeatherComp from './components/WeatherComp.vue';
 import Error from './components/Error.vue';
 import Loader from './components/Loader.vue';
+import Forecast from './components/Forecast.vue';
 import { getWeather } from './composables/getWeather';
 
 const { forecast, error, fetching, fetchWeather } = getWeather();
@@ -26,7 +28,7 @@ const { forecast, error, fetching, fetchWeather } = getWeather();
 
 <style scoped>
 .weather {
-  padding: 2rem;
+  padding: 0 2rem;
   place-self: flex-start center;
 }
 
