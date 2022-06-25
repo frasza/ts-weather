@@ -1,12 +1,15 @@
 <template>
   <div class="forecast" v-if="forecast">
     <div class="location">
-      <p>{{ forecast.name }}, {{ forecast.country }}</p>
+      <p>{{ forecast.location.name }}, {{ forecast.location.country }}</p>
     </div>
-    <p>Temperature: {{ forecast.temp_c }} °C</p>
+    <p>Temperature: {{ forecast.current.temp_c }} °C</p>
     <div class="condition">
-      <img :src="forecast.condition_icon" :alt="forecast.condition" />
-      <p>{{ forecast.condition }}</p>
+      <img
+        :src="forecast.current.condition.icon"
+        :alt="forecast.current.condition.text"
+      />
+      <p>{{ forecast.current.condition.text }}</p>
     </div>
     <div class="air_quality">
       <span>Air pollution: </span>
@@ -14,13 +17,13 @@
       <div class="air_quality_radar" :class="airQualityRadarColor()"></div>
     </div>
     <div class="date">
-      <p>Updated: {{ forecast.last_updated }}</p>
+      <p>Updated: {{ forecast.current.last_updated }}</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Weather from '@/model/Weather';
+import { Weather } from '@/model/Weather';
 import { computed } from '@vue/reactivity';
 import { defineComponent, defineProps } from 'vue';
 
@@ -34,19 +37,19 @@ const props = defineProps<{
 const airQualityRadarColor = () => {
   if (!props.forecast) return;
   return {
-    air_quality_low: props.forecast.air_quality_index < 4,
-    air_quality_med: props.forecast.air_quality_index > 3,
-    air_quality_high: props.forecast.air_quality_index > 6,
+    air_quality_low: props.forecast.current.air_quality['gb-defra-index'] < 4,
+    air_quality_med: props.forecast.current.air_quality['gb-defra-index'] > 3,
+    air_quality_high: props.forecast.current.air_quality['gb-defra-index'] > 6,
   };
 };
 
 const airQualityIndexText = computed<string>(() => {
   if (!props.forecast) return '';
-  return props.forecast.air_quality_index <= 3
+  return props.forecast.current.air_quality['gb-defra-index'] <= 3
     ? 'Low'
-    : props.forecast.air_quality_index > 3
+    : props.forecast.current.air_quality['gb-defra-index'] > 3
     ? 'Moderate'
-    : props.forecast.air_quality_index > 7
+    : props.forecast.current.air_quality['gb-defra-index'] > 7
     ? 'High'
     : 'Unknown';
 });

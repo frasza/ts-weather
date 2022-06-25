@@ -1,4 +1,4 @@
-import Weather from '@/model/Weather';
+import { Weather } from '@/model/Weather';
 import { ref } from 'vue';
 
 export function getWeather() {
@@ -12,7 +12,7 @@ export function getWeather() {
     fetching.value = true;
     try {
       const response = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${process.env.VUE_APP_APIKEY}&q=${fetchedCity}&aqi=yes`
+        `https://api.weatherapi.com/v1/forecast.json?key=${process.env.VUE_APP_APIKEY}&q=${fetchedCity}&days=5&aqi=yes`
       );
 
       const data = await response.json();
@@ -22,14 +22,9 @@ export function getWeather() {
       }
 
       const weather: Weather = {
-        name: data.location.name,
-        country: data.location.country,
-        last_updated: data.current.last_updated,
-        temp_c: data.current.temp_c,
-        feelslike_c: data.current.feelslike_c,
-        condition: data.current.condition.text,
-        condition_icon: data.current.condition.icon,
-        air_quality_index: data.current.air_quality['gb-defra-index'],
+        location: data.location,
+        current: data.current,
+        forecast: data.forecast,
       };
 
       forecast.value = weather;
