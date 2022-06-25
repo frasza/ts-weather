@@ -26,6 +26,7 @@ const { forecast, error, fetching, fetchWeather } = getWeather();
 
 <style scoped>
 .weather {
+  padding: 2rem;
   place-self: flex-start center;
 }
 
