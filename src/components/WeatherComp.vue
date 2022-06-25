@@ -58,6 +58,7 @@ const airQualityIndexText = computed<string>(() => {
 <style scoped>
 .forecast {
   padding: 5rem 0;
+  width: 100%;
 }
 .condition {
   display: flex;

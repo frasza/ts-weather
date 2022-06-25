@@ -5,14 +5,12 @@
       <span>Weather</span>
       <img src="./assets/images/moon.png" alt="" />
     </header>
-    <main>
-      <div class="weather">
-        <Search @searchCity="(c) => fetchWeather(c)" />
-        <WeatherComp :forecast="forecast" v-if="forecast" />
-        <Loader v-if="fetching" />
-        <Error :error="error" v-if="error" />
-      </div>
-    </main>
+    <div class="weather">
+      <Search @searchCity="(c) => fetchWeather(c)" />
+      <WeatherComp :forecast="forecast" v-if="forecast" />
+      <Loader v-if="fetching" />
+      <Error :error="error" v-if="error" />
+    </div>
   </div>
 </template>
 
@@ -20,16 +18,15 @@
 import Search from './components/Search.vue';
 import WeatherComp from './components/WeatherComp.vue';
 import Error from './components/Error.vue';
-import { getWeather } from './composables/getWeather';
 import Loader from './components/Loader.vue';
+import { getWeather } from './composables/getWeather';
 
 const { forecast, error, fetching, fetchWeather } = getWeather();
 </script>
 
 <style scoped>
 .weather {
-  padding: 2rem;
-  width: 50%;
+  place-self: flex-start center;
 }
 
 @media screen and (max-width: 400px) {
