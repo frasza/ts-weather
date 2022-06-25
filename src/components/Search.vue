@@ -41,6 +41,7 @@ input:focus {
   border: none;
   font-size: 4rem;
   outline: none;
+  width: 100%;
 }
 
 button {
