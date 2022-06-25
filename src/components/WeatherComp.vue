@@ -5,11 +5,11 @@
     </div>
     <p>Temperature: {{ forecast.current.temp_c }} °C</p>
     <div class="condition">
+      <p>{{ forecast.current.condition.text }}</p>
       <img
         :src="forecast.current.condition.icon"
         :alt="forecast.current.condition.text"
       />
-      <p>{{ forecast.current.condition.text }}</p>
     </div>
     <div class="air_quality">
       <span>Air pollution: </span>

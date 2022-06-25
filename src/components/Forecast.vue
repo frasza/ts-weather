@@ -68,10 +68,19 @@ span {
   justify-content: space-between;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (min-width: 480px) {
+  .day:not(:last-child) {
+    border-right: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
   .forecast {
     display: flex;
     flex-direction: column;
+  }
+  .day:not(:last-child) {
+    border-bottom: none;
   }
 }
 </style>
